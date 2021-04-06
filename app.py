@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "welcome to the home page."
+    return render_template("public/start.xhtml")
 
 @app.route("/h1/")
 def who():
