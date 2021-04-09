@@ -3,6 +3,12 @@ from flask import render_template
 import os
 import random
 
+from OpenSSL import SSL
+'''
+context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
+context.use_privatekey_file('server.key')
+context.use_certificate_file('server.crt')  
+'''
 app = Flask(__name__)
 
 @app.route("/")
@@ -25,4 +31,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), ssl_context='adhoc')
